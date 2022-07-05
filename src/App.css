@@ -1,0 +1,15 @@
+h1{
+  text-align: center;
+}
+.side{
+  position: fixed!important;
+  /* color: blue!important; */
+  /* background-color: aliceblue!important; */
+}
+
+.active :active {
+  cursor: pointer;
+  background-color: white;
+  color: orange;
+
+}
