@@ -2,15 +2,11 @@ import {Container} from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
-import Uptask  from './Uptask';
-import Hours from './Hours';
-function Tasks() {
+
+
+function Uptask() {
   return (
     <Container>
-
-
-    <h2>Daily Status:-</h2>
-    <h5 className='mt-3'>Status:-</h5>
     <form>
     <Row className='mt-2 ms-2'>
       <Col lg={6}>
@@ -24,10 +20,10 @@ function Tasks() {
         </Row>
         <Row className='mt-2'>
           <Col lg={5}>
-            <label>Total Hours :</label>
+            <label>Actual Hours :</label>
           </Col>
           <Col lg={5}>
-            <input type='number' placeholder="Enter the Total Hours"/>
+            <input type='number' placeholder="Enter the Actual Hours"/>
           </Col>
         </Row>
         <Row className='mt-2'>
@@ -44,15 +40,11 @@ function Tasks() {
             </Col>
     </Row>
     </form>
-    <h5 className='mt-1'>Update:-</h5>
-    <Uptask />
-    <h2>Hours Entry:-</h2>
-    <h4 className='text-center'>Weekend Hours Report</h4>
-    <Hours />
+    
     
     </Container>
 
   );
 }
 
-export default Tasks;
+export default Uptask;

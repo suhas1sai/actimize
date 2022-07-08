@@ -1,10 +1,9 @@
-import React from 'react';
+import React from 'react'
+import { form } from 'react-bootstrap';
 import { Button, Container } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import Form1 from './Form1';
-import Form2 from './Form2';
 
 function Profile() {
     const{ register,handleSubmit,formState: {errors}, reset} = useForm();
@@ -18,7 +17,6 @@ function Profile() {
     {/* <Card /> */}
 
     <h1>Profile</h1>
-    <h4>Personal Details:-</h4>
     <form onSubmit={handleSubmit(onSubmit)}>
     <Row>
             <Col lg={6}>
@@ -45,10 +43,10 @@ function Profile() {
                         <label>Nationality</label>
                     </Col>
                     <Col lg={5}>
-                       <select name="nationality">
-                        <option >Select</option>
-                        <option value="Indians">Indian</option>
-                        <option value="Non-Indians">Non-Indian</option>
+                       <select name="nationality" {...register("nation", { required: "Date of Birth is required"})}>
+                        <option value="none">Select</option>
+                        <option value="Indian">Indian</option>
+                        <option value="Non-Indian">Non-Indian</option>
                         </select>
                     {errors.nation && (<small className='text-danger'>Nationality is required</small>)}
                     {/* <small className='text-danger'>Selection is required</small> */}
@@ -126,13 +124,13 @@ function Profile() {
                 </Row>
                 <Row className='mt-2'>
                     <Col lg={5}>
-                      <label></label>
+                      <label>hii</label>
                     </Col>
                     <Col lg={5}>
-                        
+                        <input type="text" placeholder='hiii'/>
                     </Col>
                 </Row>
-                <Row className='mt-3'>
+                <Row className='mt-1'>
                     <Col lg={5}>
                         <label>Personal Email</label>
                     </Col>
@@ -156,13 +154,9 @@ function Profile() {
             </Col>
         </Row>
         
-    </form> 
-    <h4>Emergency Details:-</h4>   
-    <Form1 />
-    <Form2 />    
+    </form>        
         </Container>
   );
 }
 
 export default Profile;
-
