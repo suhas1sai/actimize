@@ -5,6 +5,8 @@ import { Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import Form1 from './Form1';
 import Form2 from './Form2';
+import './App.css';
+
 
 function Profile() {
     const{ register,handleSubmit,formState: {errors}, reset} = useForm();
@@ -27,15 +29,17 @@ function Profile() {
                         <label>First Name</label>
                     </Col>
                     <Col lg={5}>
-                    <input type="text" name="fname" placehollder="enter the Last Name" {...register("fname", { required: "Last name is required"})}/> 
-                    {errors.fname && (<small className='text-danger'>First Name is required</small>)}
+                    <input type="text" name="fname" placehollder="enter the First Name" {...register("fname", { required: "First name is required", pattern: {
+                        value: /(^[a-zA-Z][a-zA-Z\s]{0,20}[a-zA-Z]$)/,
+                        message: "Enter the valid name" }})}/>
+                    {errors.fname && (<small className='text-danger'>{errors.fname.message}</small>)}
                     </Col>
                 </Row>
                 <Row className='mt-2'>
                     <Col lg={5}>
                         <label>Date Of Birth</label>
                     </Col>
-                    <Col lg={5}>
+                    <Col lg={7}>
                     <input type="date" name="date" placehollder="enter the First Name" {...register("date", { required: "Date of Birth is required"})}/> 
                     {errors.date && (<small className='text-danger'>Date of Birth is required</small>)}
                     </Col>
@@ -45,13 +49,13 @@ function Profile() {
                         <label>Nationality</label>
                     </Col>
                     <Col lg={5}>
-                       <select name="nationality">
-                        <option >Select</option>
+                       <select name="nationality" {...register("nation", { required: "Nationality is required"})}>
+                        <option value="">Select</option>
                         <option value="Indians">Indian</option>
                         <option value="Non-Indians">Non-Indian</option>
                         </select>
-                    {errors.nation && (<small className='text-danger'>Nationality is required</small>)}
-                    {/* <small className='text-danger'>Selection is required</small> */}
+                    {errors.nation && (<small className='text-danger'>{errors.nation.message}</small>)}
+                
 
                     </Col>
                 </Row>
@@ -60,11 +64,11 @@ function Profile() {
                         <label>Mobile Number</label>
                     </Col>
                     <Col lg={5}>
-                    <input type="text" name="number1" placehollder="enter the First Name" {...register("number", { required: "mobile number is required", pattern: {
+                    <input type="text" name="number1" placehollder="enter the First Name" {...register("number", { required: "Mobile number is required", pattern: {
                         value: /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[6789]\d{9}$/,
-                        message: "only numbers are allowed",
+                        message: "Enter the Valid Mobile Number",
                     }})}/> 
-                    {errors.number && (<small className='text-danger'>Mobile Number is required</small>)}
+                    {errors.number && (<small className='text-danger'>{errors.number.message}</small>)}
                     </Col>
                 </Row>
                 <Row className='mt-2'>
@@ -73,10 +77,10 @@ function Profile() {
                     </Col>
                     <Col lg={5}>
                     <input type="email" name="email1" placehollder="enter the First Name" {...register("cemail", { required: "Company Email is required", pattern:{
-                        value: "/[a-zA-Z0-9._%+-]+@[a-z0-9+=]+\.[a-z]{2,8}(.[a-z{2,8}]?/g",
+                        value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ,
                         message: "Enter valid Email Address"
                     }})}/> 
-                    {errors.cemail && (<small className='text-danger'>Company Email is required</small>)}
+                    {errors.cemail && (<small className='text-danger'>{errors.cemail.message}</small>)}
                     </Col>
                 </Row>
                 <Row className='mt-2'>
@@ -96,8 +100,10 @@ function Profile() {
                         <label>Last Name</label>
                     </Col>
                     <Col lg={5}>
-                    <input type="text" name="lname" placehollder="enter the Last Name" {...register("lname", { required: "Last name is required"})}/> 
-                    {errors.lname && (<small className='text-danger'>Last Name is required</small>)}
+                    <input type="text" name="lname" placehollder="enter the Last Name" {...register("lname", { required: "Last name is required", pattern: {
+                        value: /(^[a-zA-Z][a-zA-Z\s]{0,20}[a-zA-Z]$)/,
+                        message: "Enter the valid name" }})}/> 
+                    {errors.lname && (<small className='text-danger'>{errors.lname.message}</small>)}
                     </Col>
                 </Row>
                 <Row className='mt-2'>
@@ -105,11 +111,13 @@ function Profile() {
                         <label>Gender</label>
                     </Col>
                     <Col lg={5}>
-                    <select name="gender">
-                        <option value="none">Select</option>
+                    <select name="gender" {...register("gender", { required: "Gender is required"})}>
+                        <option value="">Select</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
                     </select> 
+                    {errors.gender && (<small className='text-danger'>{errors.gender.message}</small>)}
+
                     </Col>
                 </Row>
                 <Row className='mt-2'>
@@ -117,11 +125,13 @@ function Profile() {
                         <label>Martial Status</label>
                     </Col>
                     <Col lg={5}>
-                    <select name="martial">
-                        <option value="none">Select</option>
+                    <select name="martial" {...register("martial", { required: "Martial Status is required"})}>
+                        <option value="">Select</option>
                         <option value="Married">Married</option>
                         <option value="Unmarried">Unmarried</option>
                     </select>
+                    {errors.martial && (<small className='text-danger'>{errors.martial.message}</small>)}
+
                     </Col>
                 </Row>
                 <Row className='mt-2'>
@@ -137,8 +147,11 @@ function Profile() {
                         <label>Personal Email</label>
                     </Col>
                     <Col lg={5}>
-                    <input type="email" name="email2" placehollder="enter the Last Name"  {...register("pemail", { required: "Personal Email is required"})}/> 
-                    {errors.pemail && (<small className='text-danger'>Personal Email is required</small>)}
+                    <input type="email" name="email2" placehollder="enter the Last Name"  {...register("pemail", { required: "Personal Email is required", pattern:{
+                        value: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/ ,
+                        message: "Enter valid Email Address"
+                    }})}/> 
+                    {errors.pemail && (<small className='text-danger'>{errors.pemail.message}</small>)}
                     </Col>
                 </Row>
                 <Row className='mt-2'>
