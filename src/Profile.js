@@ -3,24 +3,18 @@ import { Button, Container } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
-import Form1 from './Form1';
-import Form2 from './Form2';
 import './App.css';
 
 
 function Profile() {
-    const{ register,handleSubmit,formState: {errors}, reset} = useForm();
+    const{ register,handleSubmit,formState: {errors}} = useForm();
     const onSubmit = (data) => {
         console.log(data);
-        reset();
     };
     console.log(errors);
   return (
     <Container>
-    {/* <Card /> */}
-
-    <h1>Profile</h1>
-    <h4>Personal Details:-</h4>
+    <h4 className='mt-5'>Personal Details:-</h4>
     <form onSubmit={handleSubmit(onSubmit)}>
     <Row>
             <Col lg={6}>
@@ -31,7 +25,9 @@ function Profile() {
                     <Col lg={5}>
                     <input type="text" name="fname" placehollder="enter the First Name" {...register("fname", { required: "First name is required", pattern: {
                         value: /(^[a-zA-Z][a-zA-Z\s]{0,20}[a-zA-Z]$)/,
-                        message: "Enter the valid name" }})}/>
+                        message: "Enter the valid name" }})}
+                         
+                        />
                     {errors.fname && (<small className='text-danger'>{errors.fname.message}</small>)}
                     </Col>
                 </Row>
@@ -164,15 +160,12 @@ function Profile() {
                     </Col>
                 </Row>
             </Col>
-            <Col lg={12}  className='text-center mt-4 mb-5'>
+            <Col lg={12}  className='mr-auto mt-4 mb-5'>
                 <Button type="save">Save</Button>
             </Col>
         </Row>
         
-    </form> 
-    <h4>Emergency Details:-</h4>   
-    <Form1 />
-    <Form2 />    
+    </form>    
         </Container>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container } from 'react-bootstrap';
+import { Button, Container } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
 import { Col } from 'react-bootstrap';
 
@@ -56,8 +56,11 @@ function Myproject() {
       </Col>
       <Row className='mt-5 text-center'>
           <Col lg={12}>
-            <label>Status :</label>
-            <input type='text' placeholder="Assigned By" />
+            <span>
+              <Button className='me-3'>Completed</Button>
+              <Button variant="danger" icon="columns">In Completed</Button>{' '}
+              <Button variant="warning" className='ms-4'>In Progress</Button>{' '}
+            </span>
           </Col>
         </Row>
     </Row>

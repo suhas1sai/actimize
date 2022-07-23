@@ -1,5 +1,5 @@
 import './App.css';
-import Sidebar from './Sidebar';
+import Sidebar from './Sidebar1';
 import Profile from './Profile';
 // import Topbar from './Topbar';
 import Dashboard from './Dashboard';
